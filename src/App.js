@@ -75,7 +75,8 @@ function App() {
                         {page+1}
                     </PaginationLink>
                     </PaginationItem>
-                    {page!= totalpage &&  <PaginationItem>
+                    {page!= totalpage && //eslint-disable-line
+                     <PaginationItem> 
                     <PaginationLink next  onClick={handleNextPage} />
                      </PaginationItem>}
                    
