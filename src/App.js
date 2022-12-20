@@ -17,7 +17,7 @@ function App() {
   const [message,setMessage]=useState("")
   useEffect(() => {
    getUserList()
-   setMessage("Please Wait")
+   setMessage("Please Wait ......")
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
   const getUserList = () => {
