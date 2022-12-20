@@ -17,16 +17,14 @@ function App() {
   const [message,setMessage]=useState("")
   useEffect(() => {
    getUserList()
-   setMessage("Please Wait ......")
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
   const getUserList = () => {
     PassengerList(page,20).then((res)=>{
       settotalpage(res.totalPages)
-      setMessage("")
       setPassengardata(res.data)
     }).catch((err)=>{
-      setMessage("No Passengers Found")
+      setMessage("No passengers found")
     })
   };
   const handleModal=(data)=>{
@@ -96,7 +94,7 @@ function App() {
                   </tr>
                 </thead>
                    <tbody>
-                  {message !==""?<div>{message}</div> :Passengardata?.map((item,i)=>(
+                  {Passengardata?.length ===0?<div>{message}</div> :Passengardata?.map((item,i)=>(
                   <tr key={i}>
                   <td>{item?.name}</td>
                   <td>{item?.trips}</td>
