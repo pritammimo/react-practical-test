@@ -14,16 +14,19 @@ function App() {
   const [modal,setmodal]=useState(false)
   const [modaldata,setmodaldata]=useState("")
   const [Passengardata, setPassengardata] = useState([]);
+  const [message,setMessage]=useState("")
   useEffect(() => {
    getUserList()
+   setMessage("Please Wait")
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
   const getUserList = () => {
     PassengerList(page,20).then((res)=>{
       settotalpage(res.totalPages)
+      setMessage("")
       setPassengardata(res.data)
     }).catch((err)=>{
-      console.log(err)
+      setMessage("No Passengers Found")
     })
   };
   const handleModal=(data)=>{
@@ -82,7 +85,7 @@ function App() {
                   </div>
                 </div>
               </CardHeader>
-              
+               
         <Table className="align-items-center table-flush" responsive>
                 <thead className="thead-light">
                   <tr>
@@ -91,23 +94,25 @@ function App() {
                     <th scope="col" />
                   </tr>
                 </thead>
-                <tbody>
-                  {Passengardata?.map((item,i)=>(
-                    <tr key={i}>
-                    <td>{item?.name}</td>
-                    <td>{item?.trips}</td>
-                    <td>
-                    <span 
-                    className="hovertext w-10 span-hover" data-hover="Check airline"
-                    onClick={()=>handleModal(item)}>
-                            <i className="fas fa-plane " ></i>
-                          </span>
-                        </td>
-                  </tr>
-                   )) 
-                  }
+                   <tbody>
+                  {message !==""?<div>{message}</div> :Passengardata?.map((item,i)=>(
+                  <tr key={i}>
+                  <td>{item?.name}</td>
+                  <td>{item?.trips}</td>
+                  <td>
+                  <span 
+                  className="hovertext w-10 span-hover" data-hover="Check airline"
+                  onClick={()=>handleModal(item)}>
+                          <i className="fas fa-plane " ></i>
+                        </span>
+                      </td>
+                </tr>
+                 )) 
+                }
+                 
                   
                 </tbody>
+             
               </Table>
         </Card>
        
