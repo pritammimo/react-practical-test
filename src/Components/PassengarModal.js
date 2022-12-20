@@ -10,10 +10,10 @@ const PassengarModal = ({show,onHide,data}) => {
         onClick={onHide}
         >
           <ModalHeader 
-          >Airlines information</ModalHeader>
+          >Airline information</ModalHeader>
           <ModalBody>
             {data?.length ===0 ?
-            <div>No data found</div>:<Table className="align-items-center table-flush" responsive>
+            <div>No data found</div>:<Table className="align-items-center" responsive>
             <thead className="thead-light">
               <tr>
                 <th scope="col">Name</th>

@@ -86,7 +86,7 @@ function App() {
                 </div>
               </CardHeader>
                
-        <Table className="align-items-center table-flush" responsive>
+        <Table className="align-items-center" responsive>
                 <thead className="thead-light">
                   <tr>
                     <th scope="col">User name</th>
